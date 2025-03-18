@@ -30,7 +30,8 @@ Implementation using C or pyhton code
 
 
 ## PROGRAM:
-'''
+```
+```
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -86,7 +87,7 @@ void decrypt(char cipher[], char plain[], int key) {
     }
     plain[length] = '\0'; 
 }
-'''
+
 
 
 ## OUTPUT:
