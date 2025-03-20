@@ -31,62 +31,49 @@ Implementation using C or pyhton code
 
 ## PROGRAM:
 ```
-```
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+void main()
 
-void encrypt(char plain[], char cipher[], int key);
-void decrypt(char cipher[], char plain[], int key);
-
-int main() {
-    char plain[100], cipher[100]; 
-    int key;
-    
-    printf("\nEnter the plain text: ");
-    scanf("%99s", plain);  
-    
-    printf("\nEnter the key value: ");
+{
+    char plain[10],cipher[10];
+    int key,i,length;
+    int result;
+    printf("\n Enter the plain text:");
+    scanf("%s", plain);
+    printf("\n Enter the key value:");
     scanf("%d", &key);
-    
-    encrypt(plain, cipher, key);
-    
-    printf("\n\n\tENCRYPTED TEXT: %s", cipher);
-    
-    decrypt(cipher, plain, key);
-    
-    printf("\n\n\tDECRYPTED TEXT: %s\n", plain);
-    
-    return 0;
-}
+    printf("\n \n \t PLAIN TEXt: %s", plain);
+    printf("\n \n \t ENCRYPTED TEXT:");
+    for(i=0, length = strlen(plain); i<length; i++)
+    {
+        
+        cipher[i]=plain[i] + key;
+        if (isupper(plain[i]) && (cipher[i] > 'Z'))
+        cipher[i] = cipher[i] - 26;
+        if (islower(plain[i]) && (cipher[i] > 'z'))
+        cipher[i] = cipher[i] - 26;
+        printf("%c", cipher[i]);
 
-void encrypt(char plain[], char cipher[], int key) {
-    int i, length = strlen(plain);
-    
-    for (i = 0; i < length; i++) {
-        if (isalpha(plain[i])) { 
-            char base = isupper(plain[i]) ? 'A' : 'a';
-            cipher[i] = (plain[i] - base + key) % 26 + base; 
-        } else {
-            cipher[i] = plain[i];
-        }
     }
-    cipher[length] = '\0'; 
+    printf("\n \n \t AFTER DECRYPTION : ");
+    for(i=0;i<length;i++)
+    {
+        
+        plain[i]=cipher[i]-key;
+        if(isupper(cipher[i])&&(plain[i]<'A'))
+        plain[i]=plain[i]+26;
+        if(islower(cipher[i])&&(plain[i]<'a'))
+        plain[i]=plain[i]+26;
+        printf("%c",plain[i]);
+    }
+    getchar();
 }
+```
+    
 
-void decrypt(char cipher[], char plain[], int key) {
-    int i, length = strlen(cipher);
-    
-    for (i = 0; i < length; i++) {
-        if (isalpha(cipher[i])) { 
-            char base = isupper(cipher[i]) ? 'A' : 'a';
-            plain[i] = (cipher[i] - base - key + 26) % 26 + base;  
-        } else {
-            plain[i] = cipher[i]; 
-        }
-    }
-    plain[length] = '\0'; 
-}
+   
 
 
 
