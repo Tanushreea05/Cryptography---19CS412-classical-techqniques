@@ -93,7 +93,7 @@ The program is executed successfully
 
 ---------------------------------
 
-# EX 02 PlayFair Cipher
+# EX:02 PlayFair Cipher
 Playfair Cipher using with different key values
 
 # AIM:
